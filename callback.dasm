@@ -1,0 +1,22 @@
+0x00000100:  B0 41 ;                MOV            AL, BYTE 0x41
+0x00000102:  B9 0A 00 ;             MOV            CX, WORD 0x000A
+0x00000105:  BE 1C 01 ;             MOV            SI, WORD 0x011C
+0x00000108:  E8 04 00 ;             CALL           WORD 0x0004
+0x0000010B:  B4 4C ;                MOV            AH, BYTE 0x4C
+0x0000010D:  CD 21 ;                INT            BYTE 0x21
+0x0000010F:  51 ;                   PUSH           CX
+0x00000110:  85 C9 ;                TEST           CX, CX
+0x00000112:  74 06 ;                JE             BYTE 0x06
+0x00000114:  FF D6 ;                CALL           SI
+0x00000116:  49 ;                   DEC            CX
+0x00000117:  E9 F8 FF ;             JMP            WORD 0xFFF8
+0x0000011A:  59 ;                   POP            CX
+0x0000011B:  C3 ;                   RET           
+0x0000011C:  50 ;                   PUSH           AX
+0x0000011D:  52 ;                   PUSH           DX
+0x0000011E:  88 C2 ;                MOV            DL, AL
+0x00000120:  B4 02 ;                MOV            AH, BYTE 0x02
+0x00000122:  CD 21 ;                INT            BYTE 0x21
+0x00000124:  5A ;                   POP            DX
+0x00000125:  58 ;                   POP            AX
+0x00000126:  C3 ;                   RET           

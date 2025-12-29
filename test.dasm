@@ -1,0 +1,321 @@
+0x00000100:  37 ;                   AAA           
+0x00000101:  D5 0A ;                AAD           
+0x00000103:  D4 0A ;                AAM           
+0x00000105:  3F ;                   AAS           
+0x00000106:  10 10 ;                ADC            BYTE [BX + SI], DL
+0x00000108:  10 06 10 00 ;          ADC            BYTE [0x0010], AL
+0x0000010C:  10 0E 20 00 ;          ADC            BYTE [0x0020], CL
+0x00000110:  10 0F ;                ADC            BYTE [BX], CL
+0x00000112:  10 4F 01 ;             ADC            BYTE [BX + 0x01], CL
+0x00000115:  10 8F 00 01 ;          ADC            BYTE [BX + 0x0100], CL
+0x00000119:  11 8F 00 01 ;          ADC            WORD [BX + 0x0100], CX
+0x0000011D:  12 8F 00 01 ;          ADC            CL, BYTE [BX + 0x0100]
+0x00000121:  13 8F 00 01 ;          ADC            CX, WORD [BX + 0x0100]
+0x00000125:  14 10 ;                ADC            AL, BYTE 0x10
+0x00000127:  15 10 20 ;             ADC            AX, WORD 0x2010
+0x0000012A:  83 16 10 00 10 ;       ADC            WORD [0x0010], BYTE 0x10
+0x0000012F:  80 57 10 10 ;          ADC            BYTE [BX + 0x10], BYTE 0x10
+0x00000133:  81 57 10 00 01 ;       ADC            WORD [BX + 0x10], WORD 0x0100
+0x00000138:  83 57 10 10 ;          ADC            WORD [BX + 0x10], BYTE 0x10
+0x0000013C:  83 97 00 10 10 ;       ADC            WORD [BX + 0x1000], BYTE 0x10
+0x00000141:  83 97 00 10 10 ;       ADC            WORD [BX + 0x1000], BYTE 0x10
+0x00000146:  00 10 ;                ADD            BYTE [BX + SI], DL
+0x00000148:  00 17 ;                ADD            BYTE [BX], DL
+0x0000014A:  01 17 ;                ADD            WORD [BX], DX
+0x0000014C:  02 17 ;                ADD            DL, BYTE [BX]
+0x0000014E:  03 17 ;                ADD            DX, WORD [BX]
+0x00000150:  04 20 ;                ADD            AL, BYTE 0x20
+0x00000152:  05 00 20 ;             ADD            AX, WORD 0x2000
+0x00000155:  80 07 20 ;             ADD            BYTE [BX], BYTE 0x20
+0x00000158:  81 07 00 20 ;          ADD            WORD [BX], WORD 0x2000
+0x0000015C:  81 07 20 00 ;          ADD            WORD [BX], WORD 0x0020
+0x00000160:  81 40 04 20 00 ;       ADD            WORD [BX + SI + 0x04], WORD 0x0020
+0x00000165:  20 1E 14 00 ;          AND            BYTE [0x0014], BL
+0x00000169:  21 1E 14 00 ;          AND            WORD [0x0014], BX
+0x0000016D:  22 1E 14 00 ;          AND            BL, BYTE [0x0014]
+0x00000171:  23 1E 14 00 ;          AND            BX, WORD [0x0014]
+0x00000175:  80 27 20 ;             AND            BYTE [BX], BYTE 0x20
+0x00000178:  81 27 00 20 ;          AND            WORD [BX], WORD 0x2000
+0x0000017C:  63 06 0A 00 ;          ARPL           WORD [0x000A], AX
+0x00000180:  62 06 14 00 ;          BOUND          AX, WORD [0x0014]
+0x00000184:  E8 00 20 ;             CALL           WORD 0x2000
+0x00000187:  FF 16 E8 03 ;          CALL           WORD [0x03E8]
+0x0000018B:  9A 00 20 00 20 ;       CALL           DWORD 0x20002000
+0x00000190:  FF 18 ;                CALL           DWORD [BX + SI]
+0x00000192:  98 ;                   CBW           
+0x00000193:  F8 ;                   CLC           
+0x00000194:  FC ;                   CLD           
+0x00000195:  FA ;                   CLI           
+0x00000196:  0F 06 ;                CLTS          
+0x00000198:  F5 ;                   CMC           
+0x00000199:  3C 10 ;                CMP            AL, BYTE 0x10
+0x0000019B:  3D 10 20 ;             CMP            AX, WORD 0x2010
+0x0000019E:  80 38 10 ;             CMP            BYTE [BX + SI], BYTE 0x10
+0x000001A1:  38 06 10 00 ;          CMP            WORD [0x0010], AX
+0x000001A5:  83 38 10 ;             CMP            WORD [BX + SI], BYTE 0x10
+0x000001A8:  81 38 10 20 ;          CMP            WORD [BX + SI], WORD 0x2010
+0x000001AC:  39 10 ;                CMP            WORD [BX + SI], DX
+0x000001AE:  3A 10 ;                CMP            DL, BYTE [BX + SI]
+0x000001B0:  3B 10 ;                CMP            DX, WORD [BX + SI]
+0x000001B2:  A6 ;                   CMPSB         
+0x000001B3:  A7 ;                   CMPSW         
+0x000001B4:  99 ;                   CWD           
+0x000001B5:  27 ;                   DAA           
+0x000001B6:  2F ;                   DAS           
+0x000001B7:  FE 0E 10 00 ;          DEC            BYTE [0x0010]
+0x000001BB:  FF 0E 10 00 ;          DEC            WORD [0x0010]
+0x000001BF:  4A ;                   DEC            DX
+0x000001C0:  F6 36 10 00 ;          DIV            BYTE [0x0010]
+0x000001C4:  F7 36 00 20 ;          DIV            WORD [0x2000]
+0x000001C8:  C8 0A 00 00 ;          ENTER          WORD 0x000A, BYTE 0x00
+0x000001CC:  C8 0A 00 01 ;          ENTER          WORD 0x000A, BYTE 0x01
+0x000001D0:  C8 0A 00 02 ;          ENTER          WORD 0x000A, BYTE 0x02
+0x000001D4:  F4 ;                   HLT           
+0x000001D5:  F6 36 10 00 ;          DIV            BYTE [0x0010]
+0x000001D9:  F7 36 00 20 ;          DIV            WORD [0x2000]
+0x000001DD:  F6 2E 10 00 ;          IMUL           BYTE [0x0010]
+0x000001E1:  F7 2E 00 20 ;          IMUL           WORD [0x2000]
+0x000001E5:  69 DB 10 00 ;          IMUL           BX, BX, WORD 0x0010
+0x000001E9:  69 06 20 00 00 10 ;    IMUL           AX, WORD [0x0020], WORD 0x1000
+0x000001EF:  69 06 20 00 10 00 ;    IMUL           AX, WORD [0x0020], WORD 0x0010
+0x000001F5:  E4 20 ;                IN             AL, BYTE 0x20
+0x000001F7:  EC ;                   IN             AL, DX
+0x000001F8:  E5 20 ;                IN             AX, BYTE 0x20
+0x000001FA:  ED ;                   IN             AX, DX
+0x000001FB:  FE 06 10 00 ;          INC            BYTE [0x0010]
+0x000001FF:  FF 06 10 00 ;          INC            WORD [0x0010]
+0x00000203:  42 ;                   INC            DX
+0x00000204:  6C ;                   INSB          
+0x00000205:  6D ;                   INSW          
+0x00000206:  CC ;                   INT3          
+0x00000207:  CD 10 ;                INT            BYTE 0x10
+0x00000209:  CE ;                   INTO          
+0x0000020A:  CF ;                   IRET          
+0x0000020B:  77 10 ;                JA             BYTE 0x10
+0x0000020D:  73 10 ;                JAE            BYTE 0x10
+0x0000020F:  72 10 ;                JB             BYTE 0x10
+0x00000211:  76 10 ;                JBE            BYTE 0x10
+0x00000213:  72 10 ;                JB             BYTE 0x10
+0x00000215:  E3 10 ;                JCXZ           BYTE 0x10
+0x00000217:  74 10 ;                JE             BYTE 0x10
+0x00000219:  7F 10 ;                JG             BYTE 0x10
+0x0000021B:  7D 10 ;                JGE            BYTE 0x10
+0x0000021D:  7C 10 ;                JL             BYTE 0x10
+0x0000021F:  7E 10 ;                JLE            BYTE 0x10
+0x00000221:  76 10 ;                JBE            BYTE 0x10
+0x00000223:  72 10 ;                JB             BYTE 0x10
+0x00000225:  73 10 ;                JAE            BYTE 0x10
+0x00000227:  77 10 ;                JA             BYTE 0x10
+0x00000229:  73 10 ;                JAE            BYTE 0x10
+0x0000022B:  75 10 ;                JNE            BYTE 0x10
+0x0000022D:  7E 10 ;                JLE            BYTE 0x10
+0x0000022F:  7C 10 ;                JL             BYTE 0x10
+0x00000231:  7D 10 ;                JGE            BYTE 0x10
+0x00000233:  7F 10 ;                JG             BYTE 0x10
+0x00000235:  71 10 ;                JNO            BYTE 0x10
+0x00000237:  7B 10 ;                JNP            BYTE 0x10
+0x00000239:  79 10 ;                JNS            BYTE 0x10
+0x0000023B:  75 10 ;                JNE            BYTE 0x10
+0x0000023D:  70 10 ;                JO             BYTE 0x10
+0x0000023F:  7A 10 ;                JP             BYTE 0x10
+0x00000241:  7A 10 ;                JP             BYTE 0x10
+0x00000243:  7B 10 ;                JNP            BYTE 0x10
+0x00000245:  78 10 ;                JS             BYTE 0x10
+0x00000247:  74 10 ;                JE             BYTE 0x10
+0x00000249:  EB 10 ;                JMP            BYTE 0x10
+0x0000024B:  EA 00 00 00 10 ;       JMP            DWORD 0x10000000
+0x00000250:  E9 00 10 ;             JMP            WORD 0x1000
+0x00000253:  FF 20 ;                JMP            WORD [BX + SI]
+0x00000255:  FF 28 ;                JMP            DWORD [BX + SI]
+0x00000257:  9F ;                   LAHF          
+0x00000258:  0F 02 06 10 00 ;       LAR            AX, WORD [0x0010]
+0x0000025D:  C5 06 40 00 ;          LDS            AX, DWORD [0x0040]
+0x00000261:  C4 1E 40 00 ;          LES            BX, DWORD [0x0040]
+0x00000265:  8D 1E 10 00 ;          LEA            BX, MEM [0x0010]
+0x00000269:  C9 ;                   LEAVE         
+0x0000026A:  0F 01 16 10 00 ;       LGDT           MEM [0x0010]
+0x0000026F:  0F 01 1E 10 00 ;       LIDT           MEM [0x0010]
+0x00000274:  0F 00 16 10 00 ;       LLDT           WORD [0x0010]
+0x00000279:  0F 01 36 10 00 ;       LMSW           WORD [0x0010]
+0x0000027E:  0F 05 ;                LOADALL286    
+0x00000280:  F0 ;                   LOCK          
+0x00000281:  AC ;                   LODSB         
+0x00000282:  AD ;                   LODSW         
+0x00000283:  E2 8B ;                LOOP           BYTE 0x8B
+0x00000285:  E1 89 ;                LOOPE          BYTE 0x89
+0x00000287:  E0 87 ;                LOOPNE         BYTE 0x87
+0x00000289:  0F 03 1E 10 00 ;       LSL            BX, WORD [0x0010]
+0x0000028E:  0F 00 1E 10 00 ;       LTR            WORD [0x0010]
+0x00000293:  88 1E 10 00 ;          MOV            BYTE [0x0010], BL
+0x00000297:  89 1E 10 00 ;          MOV            WORD [0x0010], BX
+0x0000029B:  8A 1E 10 00 ;          MOV            BL, BYTE [0x0010]
+0x0000029F:  8B 1E 10 00 ;          MOV            BX, WORD [0x0010]
+0x000002A3:  8C 06 10 00 ;          MOV            WORD [0x0010], ES
+0x000002A7:  8C 0E 10 00 ;          MOV            WORD [0x0010], CS
+0x000002AB:  8C 16 10 00 ;          MOV            WORD [0x0010], SS
+0x000002AF:  8C 1E 10 00 ;          MOV            WORD [0x0010], DS
+0x000002B3:  8E 06 10 00 ;          MOV            ES, WORD [0x0010]
+0x000002B7:  8E 16 10 00 ;          MOV            SS, WORD [0x0010]
+0x000002BB:  8E 1E 10 00 ;          MOV            DS, WORD [0x0010]
+0x000002BF:  A0 00 10 ;             MOV            AL, BYTE [0x1000]
+0x000002C2:  A1 00 10 ;             MOV            AX, WORD [0x1000]
+0x000002C5:  A2 00 10 ;             MOV            BYTE [0x1000], AL
+0x000002C8:  A3 00 10 ;             MOV            WORD [0x1000], AX
+0x000002CB:  B0 10 ;                MOV            AL, BYTE 0x10
+0x000002CD:  B2 10 ;                MOV            DL, BYTE 0x10
+0x000002CF:  B8 10 00 ;             MOV            AX, WORD 0x0010
+0x000002D2:  BA 10 00 ;             MOV            DX, WORD 0x0010
+0x000002D5:  C6 07 10 ;             MOV            BYTE [BX], BYTE 0x10
+0x000002D8:  C7 07 00 10 ;          MOV            WORD [BX], WORD 0x1000
+0x000002DC:  A4 ;                   MOVSB         
+0x000002DD:  A5 ;                   MOVSW         
+0x000002DE:  F6 20 ;                MUL            BYTE [BX + SI]
+0x000002E0:  F7 20 ;                MUL            WORD [BX + SI]
+0x000002E2:  F6 18 ;                NEG            BYTE [BX + SI]
+0x000002E4:  F7 18 ;                NEG            WORD [BX + SI]
+0x000002E6:  90 ;                   NOP           
+0x000002E7:  F6 10 ;                NOT            BYTE [BX + SI]
+0x000002E9:  F7 10 ;                NOT            WORD [BX + SI]
+0x000002EB:  08 0F ;                OR             BYTE [BX], CL
+0x000002ED:  09 0F ;                OR             WORD [BX], CX
+0x000002EF:  0A 0F ;                OR             CL, BYTE [BX]
+0x000002F1:  0B 0F ;                OR             CX, WORD [BX]
+0x000002F3:  0C 10 ;                OR             AL, BYTE 0x10
+0x000002F5:  0D 00 10 ;             OR             AX, WORD 0x1000
+0x000002F8:  80 0F 10 ;             OR             BYTE [BX], BYTE 0x10
+0x000002FB:  81 0F 00 10 ;          OR             WORD [BX], WORD 0x1000
+0x000002FF:  E6 0A ;                OUT            BYTE 0x0A, AX
+0x00000301:  E7 14 ;                OUT            BYTE 0x14, AX
+0x00000303:  EE ;                   OUT            DX, AL
+0x00000304:  EF ;                   OUT            DX, AX
+0x00000305:  6E ;                   OUTSB         
+0x00000306:  6F ;                   OUTSW         
+0x00000307:  1F ;                   POP            DS
+0x00000308:  07 ;                   POP            ES
+0x00000309:  17 ;                   POP            SS
+0x0000030A:  8F 06 10 00 ;          POP            WORD [0x0010]
+0x0000030E:  5B ;                   POP            BX
+0x0000030F:  61 ;                   POPA          
+0x00000310:  9D ;                   POPF          
+0x00000311:  06 ;                   PUSH           ES
+0x00000312:  0E ;                   PUSH           CS
+0x00000313:  16 ;                   PUSH           SS
+0x00000314:  1E ;                   PUSH           DS
+0x00000315:  53 ;                   PUSH           BX
+0x00000316:  FF 36 10 00 ;          PUSH           WORD [0x0010]
+0x0000031A:  68 00 10 ;             PUSH           WORD 0x1000
+0x0000031D:  6A 10 ;                PUSH           BYTE 0x10
+0x0000031F:  D0 17 ;                RCL            BYTE [BX], 1
+0x00000321:  D2 17 ;                RCL            BYTE [BX], CL
+0x00000323:  C0 17 02 ;             RCL            BYTE [BX], BYTE 0x02
+0x00000326:  D1 17 ;                RCL            WORD [BX], 1
+0x00000328:  D3 17 ;                RCL            WORD [BX], CL
+0x0000032A:  C1 17 02 ;             RCL            WORD [BX], BYTE 0x02
+0x0000032D:  D0 1F ;                RCR            BYTE [BX], 1
+0x0000032F:  D2 1F ;                RCR            BYTE [BX], CL
+0x00000331:  C0 1F 02 ;             RCR            BYTE [BX], BYTE 0x02
+0x00000334:  D1 1F ;                RCR            WORD [BX], 1
+0x00000336:  D3 1F ;                RCR            WORD [BX], CL
+0x00000338:  C1 1F 02 ;             RCR            WORD [BX], BYTE 0x02
+0x0000033B:  D0 07 ;                ROL            BYTE [BX], 1
+0x0000033D:  D2 07 ;                ROL            BYTE [BX], CL
+0x0000033F:  C0 07 02 ;             ROL            BYTE [BX], BYTE 0x02
+0x00000342:  D1 07 ;                ROL            WORD [BX], 1
+0x00000344:  D3 07 ;                ROL            WORD [BX], CL
+0x00000346:  C1 07 02 ;             ROL            WORD [BX], BYTE 0x02
+0x00000349:  D0 0F ;                ROR            BYTE [BX], 1
+0x0000034B:  D2 0F ;                ROR            BYTE [BX], CL
+0x0000034D:  C0 0F 02 ;             ROR            BYTE [BX], BYTE 0x02
+0x00000350:  D1 0F ;                ROR            WORD [BX], 1
+0x00000352:  D3 0F ;                ROR            WORD [BX], CL
+0x00000354:  C1 0F 02 ;             ROR            WORD [BX], BYTE 0x02
+0x00000357:  F3 6C ;                REP INSB      
+0x00000359:  F3 6D ;                REP INSW      
+0x0000035B:  F3 A4 ;                REP MOVSB     
+0x0000035D:  F3 A5 ;                REP MOVSW     
+0x0000035F:  F3 6E ;                REP OUTSB     
+0x00000361:  F3 6F ;                REP OUTSW     
+0x00000363:  F3 AA ;                REP STOSB     
+0x00000365:  F3 AB ;                REP STOSW     
+0x00000367:  F3 A6 ;                REPE CMPSB    
+0x00000369:  F3 A7 ;                REPE CMPSW    
+0x0000036B:  F3 AE ;                REPE SCASB    
+0x0000036D:  F3 AF ;                REPE SCASW    
+0x0000036F:  F2 A6 ;                REPNE CMPSB   
+0x00000371:  F2 A7 ;                REPNE CMPSW   
+0x00000373:  F2 AE ;                REPNE SCASB   
+0x00000375:  F2 AF ;                REPNE SCASW   
+0x00000377:  CB ;                   RET           
+0x00000378:  C3 ;                   RET           
+0x00000379:  CA 00 10 ;             RETF           WORD 0x1000
+0x0000037C:  C2 00 10 ;             RET            WORD 0x1000
+0x0000037F:  9E ;                   SAHF          
+0x00000380:  D0 27 ;                SAL            BYTE [BX], 1
+0x00000382:  D2 27 ;                SAL            BYTE [BX], CL
+0x00000384:  C0 27 02 ;             SAL            BYTE [BX], BYTE 0x02
+0x00000387:  D1 27 ;                SAL            WORD [BX], 1
+0x00000389:  D3 27 ;                SAL            WORD [BX], CL
+0x0000038B:  C1 27 02 ;             SAL            WORD [BX], BYTE 0x02
+0x0000038E:  D0 3F ;                SAR            BYTE [BX], 1
+0x00000390:  D2 3F ;                SAR            BYTE [BX], CL
+0x00000392:  C0 3F 02 ;             SAR            BYTE [BX], BYTE 0x02
+0x00000395:  D1 3F ;                SAR            WORD [BX], 1
+0x00000397:  D3 3F ;                SAR            WORD [BX], CL
+0x00000399:  C1 3F 02 ;             SAR            WORD [BX], BYTE 0x02
+0x0000039C:  D0 2F ;                SHR            BYTE [BX], 1
+0x0000039E:  D2 2F ;                SHR            BYTE [BX], CL
+0x000003A0:  C0 2F 02 ;             SHR            BYTE [BX], BYTE 0x02
+0x000003A3:  D1 2F ;                SHR            WORD [BX], 1
+0x000003A5:  D3 2F ;                SHR            WORD [BX], CL
+0x000003A7:  C1 2F 02 ;             SHR            WORD [BX], BYTE 0x02
+0x000003AA:  18 17 ;                SBB            BYTE [BX], DL
+0x000003AC:  19 17 ;                SBB            WORD [BX], DX
+0x000003AE:  1A 17 ;                SBB            DL, BYTE [BX]
+0x000003B0:  1B 17 ;                SBB            DX, WORD [BX]
+0x000003B2:  1C 10 ;                SBB            AL, BYTE 0x10
+0x000003B4:  1D 00 10 ;             SBB            AX, WORD 0x1000
+0x000003B7:  80 1F 10 ;             SBB            BYTE [BX], BYTE 0x10
+0x000003BA:  81 1F 00 10 ;          SBB            WORD [BX], WORD 0x1000
+0x000003BE:  83 1F 10 ;             SBB            WORD [BX], BYTE 0x10
+0x000003C1:  AE ;                   SCASB         
+0x000003C2:  AF ;                   SCASW         
+0x000003C3:  0F 01 06 10 00 ;       SGDT           MEM [0x0010]
+0x000003C8:  0F 01 0E 10 00 ;       SIDT           MEM [0x0010]
+0x000003CD:  0F 00 06 10 00 ;       SLDT           WORD [0x0010]
+0x000003D2:  0F 01 26 10 00 ;       SMSW           WORD [0x0010]
+0x000003D7:  F9 ;                   STC           
+0x000003D8:  FD ;                   STD           
+0x000003D9:  FB ;                   STI           
+0x000003DA:  AA ;                   STOSB         
+0x000003DB:  AB ;                   STOSW         
+0x000003DC:  0F 00 0E 10 00 ;       STR            WORD [0x0010]
+0x000003E1:  28 17 ;                SUB            BYTE [BX], DL
+0x000003E3:  29 17 ;                SUB            WORD [BX], DX
+0x000003E5:  2A 17 ;                SUB            DL, BYTE [BX]
+0x000003E7:  2B 17 ;                SUB            DX, WORD [BX]
+0x000003E9:  2C 10 ;                SUB            AL, BYTE 0x10
+0x000003EB:  2D 00 10 ;             SUB            AX, WORD 0x1000
+0x000003EE:  80 2F 10 ;             SUB            BYTE [BX], BYTE 0x10
+0x000003F1:  81 2F 00 10 ;          SUB            WORD [BX], WORD 0x1000
+0x000003F5:  83 2F 10 ;             SUB            WORD [BX], BYTE 0x10
+0x000003F8:  84 17 ;                TEST           BYTE [BX], DL
+0x000003FA:  85 17 ;                TEST           WORD [BX], DX
+0x000003FC:  A8 10 ;                TEST           AL, BYTE 0x10
+0x000003FE:  A9 00 10 ;             TEST           AX, WORD 0x1000
+0x00000401:  F6 07 10 ;             TEST           BYTE [BX], BYTE 0x10
+0x00000404:  F7 07 00 10 ;          TEST           WORD [BX], WORD 0x1000
+0x00000408:  0F 00 26 10 00 ;       VERR           WORD [0x0010]
+0x0000040D:  0F 00 2E 10 00 ;       VERW           WORD [0x0010]
+0x00000412:  9B ;                   WAIT          
+0x00000413:  86 CB ;                XCHG           BL, CL
+0x00000415:  87 CB ;                XCHG           BX, CX
+0x00000417:  92 ;                   XCHG           AX, DX
+0x00000418:  D7 ;                   XLATB         
+0x00000419:  30 17 ;                XOR            BYTE [BX], DL
+0x0000041B:  31 17 ;                XOR            WORD [BX], DX
+0x0000041D:  32 17 ;                XOR            DL, BYTE [BX]
+0x0000041F:  33 17 ;                XOR            DX, WORD [BX]
+0x00000421:  34 10 ;                XOR            AL, BYTE 0x10
+0x00000423:  35 00 10 ;             XOR            AX, WORD 0x1000
+0x00000426:  80 37 10 ;             XOR            BYTE [BX], BYTE 0x10
+0x00000429:  81 37 00 10 ;          XOR            WORD [BX], WORD 0x1000

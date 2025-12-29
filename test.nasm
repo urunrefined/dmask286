@@ -1,0 +1,398 @@
+AAA
+AAD
+AAM
+AAS
+db 0x10, 0x10
+ADC byte [0x10], AL
+ADC byte [0x20], CL
+ADC byte [BX], CL
+ADC byte [BX + 0x1], CL
+ADC byte [BX + 0x100], CL
+ADC word [BX + 0x100], CX
+ADC CL, byte [BX + 0x100]
+ADC CX, word [BX + 0x100]
+ADC AL, byte 0x10
+DB 0x15, 0x10, 0x20
+ADC [0x10], byte 0x10
+ADC byte [BX + 0x10], byte 0x10
+ADC word [BX + 0x10], word 0x100
+ADC word [BX + 0x10], byte 0x10
+ADC word [BX + 0x1000], byte 0x10
+ADC word [BX + 0x1000], byte 0x10
+
+db 0x00, 0x10
+ADD [BX], DL
+ADD [BX], DX
+ADD DL, [BX]
+ADD DX, [BX]
+DB 0x04, 0x20
+DB 0x05, 0x00, 0x20
+ADD byte [BX], 0x20
+ADD word [BX], 0x2000
+ADD word [BX], 0x20
+ADD word [BX + SI + 4], 0x20
+
+AND byte [20], BL
+AND word [20], BX
+AND BL, byte [20]
+AND BX, word [20]
+
+AND byte [BX], 0x20
+AND word [BX], 0x2000
+
+ARPL [10], AX
+BOUND AX, [20]
+
+DB 0xE8, 0x00, 0x20
+CALL [1000]
+DB 0x9A, 0x00, 0x20, 0x00, 0x20
+DB 0xFF, 0b00011000
+CBW
+CLC
+CLD
+CLI
+CLTS
+CMC
+
+;CMP
+db 0x3C, 0x10
+db 0x3D, 0x10, 0x20
+db 0x80, 0b00111000, 0x10
+CMP [0x10], AL
+db 0x83, 0b00111000, 0x10
+db 0x81, 0b00111000, 0x10, 0x20
+db 0x39, 0x10
+db 0x3A, 0x10
+db 0x3B, 0x10
+CMPSB
+CMPSW
+CWD
+DAA
+DAS
+DEC byte [0x10]
+DEC word [0x10]
+DEC DX
+
+DIV byte [0x10]
+DIV word [0x2000]
+
+ENTER 10, 0
+ENTER 10, 1
+ENTER 10, 2 
+
+HLT
+
+DIV byte [0x10]
+DIV word [0x2000]
+
+IMUL byte [0x10]
+IMUL word [0x2000]
+
+IMUL BX, 0x10
+IMUL AX, [0x20], 0x1000
+IMUL AX, [0x20], 0x10
+
+IN AL,   0x20
+IN AL,   DX
+IN AX,   0x20
+IN AX,   DX
+
+INC byte [0x10]
+INC word [0x10]
+INC DX
+
+INSB
+INSW
+
+DB 0xCC
+DB 0xCD, 0x10
+DB 0xCE
+IRET
+
+db 0x77, 0x10
+db 0x73, 0x10
+db 0x72, 0x10
+db 0x76, 0x10
+db 0x72, 0x10
+db 0xE3, 0x10
+db 0x74, 0x10
+db 0x7F, 0x10
+db 0x7D, 0x10
+db 0x7C, 0x10
+db 0x7E, 0x10
+db 0x76, 0x10
+db 0x72, 0x10
+db 0x73, 0x10
+db 0x77, 0x10
+db 0x73, 0x10
+db 0x75, 0x10
+db 0x7E, 0x10
+db 0x7C, 0x10
+db 0x7D, 0x10
+db 0x7F, 0x10
+db 0x71, 0x10
+db 0x7B, 0x10
+db 0x79, 0x10
+db 0x75, 0x10
+db 0x70, 0x10
+db 0x7A, 0x10
+db 0x7A, 0x10
+db 0x7B, 0x10
+db 0x78, 0x10
+db 0x74, 0x10
+
+db 0xEB, 0x10
+db 0xEA, 0x00, 0x00, 0x00, 0x10
+db 0xE9, 0x00, 0x10
+
+db 0xFF, 0b00100000
+db 0xFF, 0b00101000
+
+LAHF
+LAR AX, [0x10]
+LDS AX, [0x40]
+LES BX, [0x40]
+
+LEA BX, [0x10]
+LEAVE
+LGDT [0x10]
+LIDT [0x10]
+LLDT [0x10]
+LMSW [0x10]
+
+;LOADALL286
+DB 0x0F, 0x05
+LOCK
+
+LODSB
+LODSW
+
+LOOP 0x10
+LOOPE 0x10
+LOOPNE 0x10
+
+LSL BX, [0x10]
+LTR [0x10]
+
+MOV byte [0x10], BL
+MOV word [0x10], BX
+MOV BL, byte [0x10]
+MOV BX, word [0x10]
+MOV word [0x10], ES
+MOV word [0x10], CS
+MOV word [0x10], SS
+MOV word [0x10], DS
+
+MOV ES, word [0x10]
+MOV SS, word [0x10]
+MOV DS, word [0x10]
+
+DB 0xA0, 0x00, 0x10
+DB 0xA1, 0x00, 0x10
+DB 0xA2, 0x00, 0x10
+DB 0xA3, 0x00, 0x10
+
+MOV AL, 0x10
+MOV DL, 0x10
+MOV AX, 0x10
+MOV DX, 0x10
+
+MOV byte [BX], 0x10
+MOV word [BX], 0x1000
+
+MOVSB
+MOVSW
+
+DB 0xF6, 0b00100000
+DB 0xF7, 0b00100000
+
+DB 0xF6, 0b00011000
+DB 0xF7, 0b00011000
+
+NOP
+
+DB 0xF6, 0b00010000
+DB 0xF7, 0b00010000
+
+OR byte [BX], CL
+OR word [BX], CX
+OR CL, byte [BX]
+OR CX, word [BX]
+
+OR AL, 0x10
+OR AX, 0x1000
+
+OR byte [BX], 0x10
+OR word [BX], 0x1000
+
+OUT 10, AL
+OUT 20, AX
+
+DB 0xEE
+DB 0xEF
+
+OUTSB
+OUTSW
+
+POP DS
+POP ES
+POP SS
+pop word [0x10]
+pop BX
+
+POPA
+POPF
+
+PUSH ES
+PUSH CS
+PUSH SS
+PUSH DS
+
+PUSH BX
+PUSH WORD [0x10]
+PUSH 0x1000
+DB 0x6A, 0x10
+
+RCL byte [BX], 1
+RCL byte [BX], CL
+RCL byte [BX], 2
+RCL word [BX], 1
+RCL word [BX], CL
+RCL word [BX], 2
+
+RCR byte [BX], 1
+RCR byte [BX], CL
+RCR byte [BX], 2
+RCR word [BX], 1
+RCR word [BX], CL
+RCR word [BX], 2
+
+ROL byte [BX], 1
+ROL byte [BX], CL
+ROL byte [BX], 2
+ROL word [BX], 1
+ROL word [BX], CL
+ROL word [BX], 2
+
+ROR byte [BX], 1
+ROR byte [BX], CL
+ROR byte [BX], 2
+ROR word [BX], 1
+ROR word [BX], CL
+ROR word [BX], 2
+
+REP INSB
+REP INSW
+
+REP MOVSB
+REP MOVSW
+
+REP OUTSB
+REP OUTSW
+
+REP STOSB
+REP STOSW
+
+REPE CMPSB
+REPE CMPSW
+
+REPE SCASB
+REPE SCASW
+
+REPNE CMPSB
+REPNE CMPSW
+
+REPNE SCASB
+REPNE SCASW
+
+DB 0xCB
+DB 0xC3
+DB 0xCA, 0x00, 0x10
+DB 0xC2, 0x00, 0x10
+
+SAHF
+
+SAL byte [BX], 1
+SAL byte [BX], CL
+SAL byte [BX], 2
+SAL word [BX], 1
+SAL word [BX], CL
+SAL word [BX], 2
+
+SAR byte [BX], 1
+SAR byte [BX], CL
+SAR byte [BX], 2
+SAR word [BX], 1
+SAR word [BX], CL
+SAR word [BX], 2
+
+SHR byte [BX], 1
+SHR byte [BX], CL
+SHR byte [BX], 2
+SHR word [BX], 1
+SHR word [BX], CL
+SHR word [BX], 2
+
+SBB byte [BX], DL
+SBB word [BX], DX
+SBB DL, byte [BX]
+SBB DX, word [BX]
+SBB AL, 0x10
+SBB AX, 0x1000
+SBB byte [BX], 0x10
+SBB word [BX], 0x1000
+SBB word [BX], byte 0x10
+
+SCASB
+SCASW
+
+SGDT [0x10]
+SIDT [0x10]
+SLDT [0x10]
+SMSW [0x10]
+
+STC
+STD
+STI
+
+STOSB
+STOSW
+STR [0x10]
+
+SUB byte [BX], DL
+SUB word [BX], DX
+SUB DL, byte [BX]
+SUB DX, word [BX]
+SUB AL, 0x10
+SUB AX, 0x1000
+SUB byte [BX], 0x10
+SUB word [BX], 0x1000
+SUB word [BX], byte 0x10
+
+TEST byte [BX], DL
+TEST word [BX], DX
+
+TEST AL, 0x10
+TEST AX, 0x1000
+
+TEST [BX], byte 0x10
+TEST [BX], word 0x1000
+
+VERR [0x10]
+VERW [0x10]
+WAIT
+
+XCHG CL, BL
+XCHG CX, BX
+XCHG AX, DX
+
+XLATB
+
+XOR byte [BX], DL
+XOR word [BX], DX
+XOR DL, byte [BX]
+XOR DX, word [BX]
+XOR AL, 0x10
+XOR AX, 0x1000
+XOR byte [BX], 0x10
+XOR word [BX], 0x1000
