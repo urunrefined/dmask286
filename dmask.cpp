@@ -1268,5 +1268,9 @@ int main(int argc, char *argv[]) {
         FileDescriptorRO rofd(filename);
         dec(getBuffer(rofd.fd), execOffset);
     } catch (...) {
+        printf("Exception\n");
+        return -3;
     }
+
+    return 0;
 }

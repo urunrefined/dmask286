@@ -1,7 +1,7 @@
 # dmask286
 
 I recently had the displeasure of analyzing some old
-old Intel hex dumps qith the standard objdump,
+old Intel hex dumps with the standard objdump utility,
 so I did what anyone in my position would do - 
 write a disassembler so I could take a look
 myself! It's also something I can easily integrate into
