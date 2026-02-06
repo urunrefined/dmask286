@@ -1235,7 +1235,7 @@ static void dec(const std::vector<uint8_t> &decode, uint32_t execOffset) {
             }
         }
 
-        printf("%*s\n", (int)line.len, line.text);
+        printf("%.*s\n", (int)line.len, line.text);
     }
 }
 
