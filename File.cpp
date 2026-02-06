@@ -1,7 +1,6 @@
 
 #include "File.h"
 
-#include <errno.h>
 #include <fcntl.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -31,7 +30,7 @@ std::vector<uint8_t> getBuffer(int fd) {
 
     std::vector<uint8_t> buf(statbuf.st_size);
 
-    ssize_t hasRead = read(fd, buf.data(), buf.size());
+    const ssize_t hasRead = read(fd, buf.data(), buf.size());
 
     if (hasRead == -1) {
         printf("Cannot read from file\n");

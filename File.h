@@ -12,4 +12,3 @@ class FileDescriptorRO {
 };
 
 std::vector<uint8_t> getBuffer(int fd);
-

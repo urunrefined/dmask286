@@ -1,7 +1,10 @@
-#include <string>
+#include <algorithm>
 #include <vector>
 
 #include <assert.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "File.h"
@@ -11,7 +14,9 @@
 // RW   - Register Word
 // EW   - Register Word or Memory (Effective Word Address)
 
-template <typename T1, size_t N> size_t arraySize(T1 (&)[N]) { return N; }
+template <typename T1, size_t N> static size_t arraySize(T1 (&)[N]) {
+    return N;
+}
 static const char *rb[] = {"AL", "CL", "DL", "BL", "AH", "CH", "DH", "BH"};
 static const char *rw[] = {"AX", "CX", "DX", "BX", "SP", "BP", "SI", "DI"};
 static const char *segments[] = {"ES", "CS", "SS", "DS"};
@@ -58,7 +63,7 @@ enum class R_Type {
     REG = 0b11,
 };
 
-const char *modNames[]{
+static const char *modNames[]{
     "BX + SI", "BX + DI", "BP + SI", "BP + DI", "SI", "DI", "BP", "BX",
 };
 
@@ -75,7 +80,7 @@ static Width getDispMemWidth(uint8_t rm, R_Type disp) {
     return Width::NONE;
 }
 
-const char *getWidthName(Width width) {
+static const char *getWidthName(Width width) {
     switch (width) {
     case Width::BYTE:
         return "BYTE";
@@ -128,24 +133,23 @@ struct Description {
 enum class OPExt { NONE, N, FPU_XY, FPU_11 };
 
 struct Op {
-    uint8_t codeSz;
-    uint8_t code[2];
     const char *name;
-    OPExt opExt;
-    uint8_t n;
-
     const Description *description;
+    OPExt opExt;
+
+    uint8_t codeSz;
+    uint8_t n;
+    uint8_t code[2];
 
     Op(const uint8_t (&code2)[2], const char *name,
        const Description *description, OPExt opExt = OPExt::NONE, uint8_t n = 0)
-        : name(name), opExt(opExt), n(n), description(description) {
+        : name(name), description(description), opExt(opExt), codeSz(2), n(n) {
         memcpy(code, &code2, 2);
-        codeSz = 2;
     }
 
     Op(const uint8_t code2, const char *name, const Description *description,
        OPExt opExt = OPExt::NONE, uint8_t n = 0)
-        : codeSz(1), name(name), opExt(opExt), n(n), description(description) {
+        : name(name), description(description), opExt(opExt), codeSz(1), n(n) {
         code[0] = code2;
     }
 };
@@ -835,10 +839,10 @@ class Line {
     size_t len;
 
     Line &operator<<(const char *str) {
-        size_t strSize = strlen(str);
-        size_t rem = sizeof(text) - len;
+        const size_t strSize = strlen(str);
+        const size_t rem = sizeof(text) - len;
 
-        size_t toAdd = std::min(strSize, rem);
+        const size_t toAdd = std::min(strSize, rem);
 
         memcpy(text + len, str, toAdd);
         len += toAdd;
@@ -848,7 +852,7 @@ class Line {
 
     Line &operator<<(Pad pad) {
         if (pad.i > len && pad.i < sizeof(text)) {
-            size_t rm = pad.i - len;
+            const size_t rm = pad.i - len;
 
             for (size_t i = 0; i < rm; i++) {
                 text[len] = ' ';
@@ -906,10 +910,7 @@ static bool isRValidOrNone(const Description &description, size_t rem) {
 static const Op *getOP(const uint8_t *cDecode, size_t rem) {
     for (const Op &op : ops) {
 
-        if (op.codeSz == 1 && rem < 1) {
-            continue;
-
-        } else if (op.codeSz == 2 && rem < 2) {
+        if ((op.codeSz == 1 && rem < 1) || (op.codeSz == 2 && rem < 2)) {
             continue;
         }
 
@@ -923,15 +924,19 @@ static const Op *getOP(const uint8_t *cDecode, size_t rem) {
                 continue;
             }
 
-            uint8_t b = cDecode[op.codeSz];
-            uint8_t n = (b >> 3) & 0b111;
+            const uint8_t b = cDecode[op.codeSz];
+            const uint8_t n = (b >> 3) & 0b111;
 
-            if (op.opExt == OPExt::FPU_XY || op.opExt == OPExt::FPU_11) {
-                uint8_t mod = (b >> 6);
+            if (op.opExt == OPExt::FPU_XY) {
+                const uint8_t mod = (b >> 6);
 
-                if (op.opExt == OPExt::FPU_XY && mod == 0b11) {
+                if (mod == 0b11) {
                     continue;
-                } else if (op.opExt == OPExt::FPU_11 && mod != 0b11) {
+                }
+            } else if (op.opExt == OPExt::FPU_11) {
+                const uint8_t mod = (b >> 6);
+
+                if (mod != 0b11) {
                     continue;
                 }
             }
@@ -957,10 +962,10 @@ static size_t getRMOffset(const Description &description,
             d.type == Type::RMDW || d.type == Type::RMQW ||
             d.type == Type::MEM) {
             // That 1 byte is available is checked in getOP
-            uint8_t b = decode[0];
+            const uint8_t b = decode[0];
 
-            R_Type type = (R_Type)(b >> 6);
-            uint8_t rm = b & 0b111;
+            const R_Type type = (R_Type)(b >> 6);
+            const uint8_t rm = b & 0b111;
 
             return (size_t)getDispMemWidth(rm, type) + 1;
         } else if (d.type == Type::ST || d.type == Type::STREG) {
@@ -991,7 +996,7 @@ static size_t getLen(const Description &description, const uint8_t *decode) {
 static void printRM(const uint8_t *cDecode, uint8_t rm, Width regWidth,
                     R_Type disp, Line &line) {
     if (disp == R_Type::NODISP && rm == 0b110) {
-        uint16_t num = cDecode[0] + (cDecode[1] << 8);
+        const uint16_t num = cDecode[0] + (cDecode[1] << 8);
         line << getWidthName(regWidth) << " [" << Num{num, HEX2} << "]";
 
     } else if (disp == R_Type::REG) {
@@ -1003,13 +1008,13 @@ static void printRM(const uint8_t *cDecode, uint8_t rm, Width regWidth,
     } else {
         line << getWidthName(regWidth) << " [" << modNames[rm];
 
-        Width width = getDispMemWidth(rm, disp);
+        const Width width = getDispMemWidth(rm, disp);
 
         if (width == Width::BYTE) {
-            uint16_t num = cDecode[0];
+            const uint16_t num = cDecode[0];
             line << " + " << Num{num, HEX1};
         } else if (width == Width::WORD) {
-            uint16_t num = cDecode[0] + (cDecode[1] << 8);
+            const uint16_t num = cDecode[0] + (cDecode[1] << 8);
             line << " + " << Num{num, HEX2};
         }
 
@@ -1036,75 +1041,75 @@ static void printDescription(const Description &description,
 
         if (d.type == Type::RMB) {
             // That 1 byte is available is checked in getOP
-            uint8_t b = decode[0];
+            const uint8_t b = decode[0];
 
-            R_Type type = (R_Type)(b >> 6);
-            uint8_t rm = b & 0b111;
+            const R_Type type = (R_Type)(b >> 6);
+            const uint8_t rm = b & 0b111;
 
             printRM(decode + 1, rm, Width::BYTE, type, line);
         } else if (d.type == Type::RMW) {
             // That 1 byte is available is checked in getOP
-            uint8_t b = decode[0];
+            const uint8_t b = decode[0];
 
-            R_Type type = (R_Type)(b >> 6);
-            uint8_t rm = b & 0b111;
+            const R_Type type = (R_Type)(b >> 6);
+            const uint8_t rm = b & 0b111;
 
             printRM(decode + 1, rm, Width::WORD, type, line);
         } else if (d.type == Type::RMDW) {
             // That 1 byte is available is checked in getOP
-            uint8_t b = decode[0];
+            const uint8_t b = decode[0];
 
-            R_Type type = (R_Type)(b >> 6);
-            uint8_t rm = b & 0b111;
+            const R_Type type = (R_Type)(b >> 6);
+            const uint8_t rm = b & 0b111;
 
             printRM(decode + 1, rm, Width::DWORD, type, line);
         } else if (d.type == Type::RMQW) {
             // That 1 byte is available is checked in getOP
-            uint8_t b = decode[0];
+            const uint8_t b = decode[0];
 
-            R_Type type = (R_Type)(b >> 6);
-            uint8_t rm = b & 0b111;
+            const R_Type type = (R_Type)(b >> 6);
+            const uint8_t rm = b & 0b111;
 
             printRM(decode + 1, rm, Width::QWORD, type, line);
         } else if (d.type == Type::MEM) {
             // That 1 byte is available is checked in getOP
-            uint8_t b = decode[0];
+            const uint8_t b = decode[0];
 
-            R_Type type = (R_Type)(b >> 6);
-            uint8_t rm = b & 0b111;
+            const R_Type type = (R_Type)(b >> 6);
+            const uint8_t rm = b & 0b111;
 
             printRM(decode + 1, rm, Width::NONE, type, line);
         } else if (d.type == Type::DB) {
             line << "BYTE " << Num{decode[offset], HEX1};
             offset++;
         } else if (d.type == Type::DW) {
-            uint16_t num = (decode[offset]) + (decode[offset + 1] << 8);
+            const uint16_t num = (decode[offset]) + (decode[offset + 1] << 8);
 
             line << "WORD " << Num{num, HEX2};
             offset += 2;
         } else if (d.type == Type::DEREFBYTEATDW) {
-            uint16_t num = (decode[offset]) + (decode[offset + 1] << 8);
+            const uint16_t num = (decode[offset]) + (decode[offset + 1] << 8);
 
             line << "BYTE [" << Num{num, HEX2} << "]";
             offset += 2;
         } else if (d.type == Type::DEREFWORDATDW) {
-            uint16_t num = (decode[offset]) + (decode[offset + 1] << 8);
+            const uint16_t num = (decode[offset]) + (decode[offset + 1] << 8);
 
             line << "WORD [" << Num{num, HEX2} << "]";
             offset += 2;
         } else if (d.type == Type::RB) {
-            uint8_t b = decode[0];
-            uint8_t r = (b >> 3) & 0b111;
+            const uint8_t b = decode[0];
+            const uint8_t r = (b >> 3) & 0b111;
 
             line << rb[r];
         } else if (d.type == Type::RW) {
-            uint8_t b = decode[0];
-            uint8_t r = (b >> 3) & 0b111;
+            const uint8_t b = decode[0];
+            const uint8_t r = (b >> 3) & 0b111;
 
             line << rw[r];
         } else if (d.type == Type::SEG) {
-            uint8_t b = decode[0];
-            uint8_t seg = (b >> 3) & 0b111;
+            const uint8_t b = decode[0];
+            const uint8_t seg = (b >> 3) & 0b111;
 
             if (seg < (uint8_t)Segment::END) {
                 line << segments[seg];
@@ -1117,9 +1122,9 @@ static void printDescription(const Description &description,
         } else if (d.type == Type::CSEG) {
             line << segments[d.num];
         } else if (d.type == Type::DDW) {
-            uint32_t num = (decode[offset]) + (decode[offset + 1] << 8) +
-                           (decode[offset + 2] << 16) +
-                           (decode[offset + 3] << 24);
+            const uint32_t num = (decode[offset]) + (decode[offset + 1] << 8) +
+                                 (decode[offset + 2] << 16) +
+                                 (decode[offset + 3] << 24);
 
             line << "DWORD " << Num{num, HEX4};
 
@@ -1131,8 +1136,8 @@ static void printDescription(const Description &description,
         } else if (d.type == Type::ST) {
             line << "ST";
         } else if (d.type == Type::STREG) {
-            uint8_t b = decode[0];
-            uint8_t reg = b & 0b111;
+            const uint8_t b = decode[0];
+            const uint8_t reg = b & 0b111;
 
             line << "ST" << Num{reg, DEC};
         }
@@ -1176,7 +1181,6 @@ static size_t printOP(const std::vector<uint8_t> &decode, uint32_t decodeOffset,
 
     line << "; " << Pad{36} << op.name << Pad{50};
 
-
     printDescription(*(op.description),
                      decode.data() + decodeOffset + op.codeSz, line);
 
@@ -1195,27 +1199,28 @@ static void dec(const std::vector<uint8_t> &decode, uint32_t execOffset) {
         if (op) {
             decodeOffset = printOP(decode, decodeOffset, execOffset, *op, line);
         } else {
-            uint8_t op1 = *(decode.data() + decodeOffset);
+            const uint8_t op1 = *(decode.data() + decodeOffset);
             const size_t rem = decode.size() - decodeOffset;
 
             if (rem >= 2 && op1 >= 0xD8 && op1 <= 0xDF) {
-                // All reserved FPU instructions which have a fixed size (plus disp depending on mod)
+                // All reserved FPU instructions which have a fixed size (plus
+                // disp depending on mod)
 
-                uint8_t op2 = *(decode.data() + decodeOffset + 1);
+                const uint8_t op2 = *(decode.data() + decodeOffset + 1);
 
                 line << Num{*(decode.data() + decodeOffset), HEX4} << ":  "
                      << Num{op1, HEX1_NO_DECORATION} << " "
                      << Num{op2, HEX1_NO_DECORATION};
 
-                uint8_t mod = op2 >> 6;
+                const uint8_t mod = op2 >> 6;
 
                 if (mod == 0b01 && rem >= 3) {
-                    uint8_t d1 = *(decode.data() + decodeOffset + 2);
+                    const uint8_t d1 = *(decode.data() + decodeOffset + 2);
                     line << " " << Num{d1, HEX1_NO_DECORATION};
                     decodeOffset += 3;
                 } else if (mod == 0b10 && rem >= 4) {
-                    uint8_t d1 = *(decode.data() + decodeOffset + 2);
-                    uint8_t d2 = *(decode.data() + decodeOffset + 3);
+                    const uint8_t d1 = *(decode.data() + decodeOffset + 2);
+                    const uint8_t d2 = *(decode.data() + decodeOffset + 3);
 
                     line << " " << Num{d1, HEX1_NO_DECORATION};
                     line << " " << Num{d2, HEX1_NO_DECORATION};
@@ -1255,7 +1260,7 @@ int main(int argc, char *argv[]) {
     size_t execOffset = 0x100;
 
     if (argc == 3) {
-        char *endptr = 0;
+        char *endptr;
         execOffset = strtol(argv[2], &endptr, 16);
 
         if (*endptr != '\0') {
@@ -1265,7 +1270,7 @@ int main(int argc, char *argv[]) {
     }
 
     try {
-        FileDescriptorRO rofd(filename);
+        const FileDescriptorRO rofd(filename);
         dec(getBuffer(rofd.fd), execOffset);
     } catch (...) {
         printf("Exception\n");
