@@ -1155,21 +1155,11 @@ static size_t printOP(const std::vector<uint8_t> &decode, uint32_t decodeOffset,
     if (len > rem) {
         line << Num{execOffset + decodeOffset, HEX4} << ":  ";
 
-        for (size_t i = 0; i < rem; i++) {
-            line << Num{*(decode.data() + decodeOffset + i), HEX1_NO_DECORATION}
-                 << " ";
-        }
+        line << Num{*(decode.data() + decodeOffset + 0), HEX1_NO_DECORATION}
+             << " ; " << Pad{36} << "DB " << Pad{50} << " ";
+        line << Num{*(decode.data() + decodeOffset + 0), HEX1};
 
-        if (rem) {
-            line << "; " << Pad{36} << "DB ";
-            line << Num{*(decode.data() + decodeOffset + 0), HEX1};
-        }
-
-        for (size_t i = 1; i < rem; i++) {
-            line << ", " << Num{*(decode.data() + decodeOffset + i), HEX1};
-        }
-
-        return decodeOffset + len;
+        return decodeOffset + 1;
     }
 
     line << Num{execOffset + decodeOffset, HEX4} << ":  ";
@@ -1247,7 +1237,7 @@ static void dec(const std::vector<uint8_t> &decode, uint32_t execOffset) {
 
             } else {
                 // Move one byte and maybe we will sync (doubtful)
-                line << Num{*(decode.data() + decodeOffset), HEX4} << ":  "
+                line << Num{execOffset + decodeOffset, HEX4} << ":  "
                      << Num{op1, HEX1_NO_DECORATION} << " ; " << Pad{36}
                      << "DB " << Num{op1, HEX1};
 

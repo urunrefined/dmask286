@@ -1,0 +1,3 @@
+0x00000100:  DD 0E 00 20 ;          FPU RESERVED
+0x00000104:  DD 0E ;                FPU RESERVED
+0x00000106:  DD ;                   DB 0xDD
