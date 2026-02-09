@@ -34,14 +34,14 @@
 0x00000154:  D9 00 ;                FLD            DWORD [BX + SI]
 0x00000156:  D9 07 ;                FLD            DWORD [BX]
 0x00000158:  D9 C7 ;                FLD            ST7
-0x000000D9:  D9 88 00 20 ;          FPU RESERVED
-0x000000D9:  D9 08 ;                FPU RESERVED
-0x000000D9:  D9 0F ;                FPU RESERVED
+0x0000015A:  D9 88 00 20 ;          FPU RESERVED
+0x0000015E:  D9 08 ;                FPU RESERVED
+0x00000160:  D9 0F ;                FPU RESERVED
 0x00000162:  D9 CF ;                FXCH           ST7
 0x00000164:  D9 90 00 20 ;          FST            DWORD [BX + SI + 0x2000]
 0x00000168:  D9 10 ;                FST            DWORD [BX + SI]
 0x0000016A:  D9 17 ;                FST            DWORD [BX]
-0x000000D9:  D9 D7 ;                FPU RESERVED
+0x0000016C:  D9 D7 ;                FPU RESERVED
 0x0000016E:  D9 98 00 20 ;          FSTP           DWORD [BX + SI + 0x2000]
 0x00000172:  D9 18 ;                FSTP           DWORD [BX + SI]
 0x00000174:  D9 1F ;                FSTP           DWORD [BX]
@@ -49,11 +49,11 @@
 0x00000178:  D9 A0 00 20 ;          FLDENV         MEM [BX + SI + 0x2000]
 0x0000017C:  D9 20 ;                FLDENV         MEM [BX + SI]
 0x0000017E:  D9 27 ;                FLDENV         MEM [BX]
-0x000000D9:  D9 E7 ;                FPU RESERVED
+0x00000180:  D9 E7 ;                FPU RESERVED
 0x00000182:  D9 A8 00 20 ;          FLDCW          DWORD [BX + SI + 0x2000]
 0x00000186:  D9 28 ;                FLDCW          DWORD [BX + SI]
 0x00000188:  D9 2F ;                FLDCW          DWORD [BX]
-0x000000D9:  D9 EF ;                FPU RESERVED
+0x0000018A:  D9 EF ;                FPU RESERVED
 0x0000018C:  D9 B0 00 20 ;          FSTENV         MEM [BX + SI + 0x2000]
 0x00000190:  D9 30 ;                FSTENV         MEM [BX + SI]
 0x00000192:  D9 37 ;                FSTENV         MEM [BX]
@@ -61,7 +61,7 @@
 0x00000196:  D9 B8 00 20 ;          FSTCW          DWORD [BX + SI + 0x2000]
 0x0000019A:  D9 38 ;                FSTCW          DWORD [BX + SI]
 0x0000019C:  D9 3F ;                FSTCW          DWORD [BX]
-0x000000D9:  D9 FF ;                FPU RESERVED
+0x0000019E:  D9 FF ;                FPU RESERVED
 0x000001A0:  D9 D0 ;                FNOP          
 0x000001A2:  D9 E0 ;                FCHS          
 0x000001A4:  D9 E1 ;                FABS          
@@ -89,35 +89,35 @@
 0x000001D0:  DA 80 00 20 ;          FIADD          DWORD [BX + SI + 0x2000]
 0x000001D4:  DA 00 ;                FIADD          DWORD [BX + SI]
 0x000001D6:  DA 07 ;                FIADD          DWORD [BX]
-0x000000DA:  DA C7 ;                FPU RESERVED
+0x000001D8:  DA C7 ;                FPU RESERVED
 0x000001DA:  DA 88 00 20 ;          FIMUL          DWORD [BX + SI + 0x2000]
 0x000001DE:  DA 08 ;                FIMUL          DWORD [BX + SI]
 0x000001E0:  DA 0F ;                FIMUL          DWORD [BX]
-0x000000DA:  DA CF ;                FPU RESERVED
+0x000001E2:  DA CF ;                FPU RESERVED
 0x000001E4:  DA 90 00 20 ;          FICOM          DWORD [BX + SI + 0x2000]
 0x000001E8:  DA 10 ;                FICOM          DWORD [BX + SI]
 0x000001EA:  DA 17 ;                FICOM          DWORD [BX]
-0x000000DA:  DA D7 ;                FPU RESERVED
+0x000001EC:  DA D7 ;                FPU RESERVED
 0x000001EE:  DA 98 00 20 ;          FICOMP         DWORD [BX + SI + 0x2000]
 0x000001F2:  DA 18 ;                FICOMP         DWORD [BX + SI]
 0x000001F4:  DA 1F ;                FICOMP         DWORD [BX]
-0x000000DA:  DA DF ;                FPU RESERVED
+0x000001F6:  DA DF ;                FPU RESERVED
 0x000001F8:  DA A0 00 20 ;          FISUB          DWORD [BX + SI + 0x2000]
 0x000001FC:  DA 20 ;                FISUB          DWORD [BX + SI]
 0x000001FE:  DA 27 ;                FISUB          DWORD [BX]
-0x000000DA:  DA E7 ;                FPU RESERVED
+0x00000200:  DA E7 ;                FPU RESERVED
 0x00000202:  DA A8 00 20 ;          FISUBR         DWORD [BX + SI + 0x2000]
 0x00000206:  DA 28 ;                FISUBR         DWORD [BX + SI]
 0x00000208:  DA 2F ;                FISUBR         DWORD [BX]
-0x000000DA:  DA EF ;                FPU RESERVED
+0x0000020A:  DA EF ;                FPU RESERVED
 0x0000020C:  DA B0 00 20 ;          FIDIV          DWORD [BX + SI + 0x2000]
 0x00000210:  DA 30 ;                FIDIV          DWORD [BX + SI]
 0x00000212:  DA 37 ;                FIDIV          DWORD [BX]
-0x000000DA:  DA F7 ;                FPU RESERVED
+0x00000214:  DA F7 ;                FPU RESERVED
 0x00000216:  DA B8 00 20 ;          FIDIVR         DWORD [BX + SI + 0x2000]
 0x0000021A:  DA 38 ;                FIDIVR         DWORD [BX + SI]
 0x0000021C:  DA 3F ;                FIDIVR         DWORD [BX]
-0x000000DA:  DA FF ;                FPU RESERVED
+0x0000021E:  DA FF ;                FPU RESERVED
 0x00000220:  DB 80 00 20 ;          FILD           DWORD [BX + SI + 0x2000]
 0x00000224:  DB 00 ;                FILD           DWORD [BX + SI]
 0x00000226:  DB 07 ;                FILD           DWORD [BX]
@@ -175,11 +175,11 @@
 0x000002A2:  DC 3F ;                FDIVR          QWORD [BX]
 0x000002A4:  DC FF ;                FDIVR          ST7, ST
 0x000002A6:  DD 00 ;                FLD            QWORD [BX + SI]
-0x000000DD:  DD 08 ;                FPU RESERVED
+0x000002A8:  DD 08 ;                FPU RESERVED
 0x000002AA:  DD 10 ;                FST            QWORD [BX + SI]
 0x000002AC:  DD 18 ;                FSTP           QWORD [BX + SI]
 0x000002AE:  DD 20 ;                FRSTOR         MEM [BX + SI]
-0x000000DD:  DD 28 ;                FPU RESERVED
+0x000002B0:  DD 28 ;                FPU RESERVED
 0x000002B2:  DD 30 ;                FSAVE          MEM [BX + SI]
 0x000002B4:  DD 38 ;                FSTSW          QWORD [BX + SI]
 0x000002B6:  DD C0 ;                FFREE          ST0
@@ -203,7 +203,7 @@
 0x000002DA:  DE F0 ;                FDIVP          ST0, ST
 0x000002DC:  DE F8 ;                FDIVRP         ST0, ST
 0x000002DE:  DF 00 ;                FILD           WORD [BX + SI]
-0x000000DF:  DF 08 ;                FPU RESERVED
+0x000002E0:  DF 08 ;                FPU RESERVED
 0x000002E2:  DF 10 ;                FIST           WORD [BX + SI]
 0x000002E4:  DF 18 ;                FISTP          WORD [BX + SI]
 0x000002E6:  DF 20 ;                FBLD           BYTE [BX + SI]
@@ -215,7 +215,7 @@
 0x000002F2:  DF D0 ;                FSTP           ST0
 0x000002F4:  DF D8 ;                FSTP           ST0
 0x000002F6:  DF E0 ;                FSTSW AX      
-0x000000DF:  DF E8 ;                FPU RESERVED
-0x000000DF:  DF F0 ;                FPU RESERVED
-0x000000DF:  DF F8 ;                FPU RESERVED
-0x000000DD:  DD 0E 00 20 ;          FPU RESERVED
+0x000002F8:  DF E8 ;                FPU RESERVED
+0x000002FA:  DF F0 ;                FPU RESERVED
+0x000002FC:  DF F8 ;                FPU RESERVED
+0x000002FE:  DD 0E 00 20 ;          FPU RESERVED

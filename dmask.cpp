@@ -1208,7 +1208,7 @@ static void dec(const std::vector<uint8_t> &decode, uint32_t execOffset) {
 
                 const uint8_t op2 = *(decode.data() + decodeOffset + 1);
 
-                line << Num{*(decode.data() + decodeOffset), HEX4} << ":  "
+                line << Num{execOffset + decodeOffset, HEX4} << ":  "
                      << Num{op1, HEX1_NO_DECORATION} << " "
                      << Num{op2, HEX1_NO_DECORATION};
 
@@ -1250,6 +1250,7 @@ static void dec(const std::vector<uint8_t> &decode, uint32_t execOffset) {
                 line << Num{*(decode.data() + decodeOffset), HEX4} << ":  "
                      << Num{op1, HEX1_NO_DECORATION} << " ; " << Pad{36}
                      << "DB " << Num{op1, HEX1};
+
                 decodeOffset++;
             }
         }
