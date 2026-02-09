@@ -910,7 +910,7 @@ static bool isRValidOrNone(const Description &description, size_t rem) {
 static const Op *getOP(const uint8_t *cDecode, size_t rem) {
     for (const Op &op : ops) {
 
-        if ((op.codeSz == 1 && rem < 1) || (op.codeSz == 2 && rem < 2)) {
+        if (rem < op.codeSz) {
             continue;
         }
 
