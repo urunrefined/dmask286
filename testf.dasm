@@ -218,3 +218,4 @@
 0x000000DF:  DF E8 ;                FPU RESERVED
 0x000000DF:  DF F0 ;                FPU RESERVED
 0x000000DF:  DF F8 ;                FPU RESERVED
+0x000000DD:  DD 0E 00 20 ;          FPU RESERVED

@@ -1218,6 +1218,20 @@ static void dec(const std::vector<uint8_t> &decode, uint32_t execOffset) {
                     const uint8_t d1 = *(decode.data() + decodeOffset + 2);
                     line << " " << Num{d1, HEX1_NO_DECORATION};
                     decodeOffset += 3;
+                } else if (mod == 0b00 && rem >= 4) {
+                    const uint8_t b = *(decode.data() + decodeOffset + 1);
+                    const uint8_t rm = b & 0b111;
+                    // Simple var
+                    if (rm == 0b110) {
+                        const uint8_t d1 = *(decode.data() + decodeOffset + 2);
+                        const uint8_t d2 = *(decode.data() + decodeOffset + 3);
+
+                        line << " " << Num{d1, HEX1_NO_DECORATION};
+                        line << " " << Num{d2, HEX1_NO_DECORATION};
+                        decodeOffset += 4;
+                    } else {
+                        decodeOffset += 2;
+                    }
                 } else if (mod == 0b10 && rem >= 4) {
                     const uint8_t d1 = *(decode.data() + decodeOffset + 2);
                     const uint8_t d2 = *(decode.data() + decodeOffset + 3);
