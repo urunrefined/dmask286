@@ -11,7 +11,7 @@
 0x00000116:  49 ;                   DEC            CX
 0x00000117:  E9 F8 FF ;             JMP            WORD 0xFFF8
 0x0000011A:  59 ;                   POP            CX
-0x0000011B:  C3 ;                   RET           
+0x0000011B:  C3 ;                   RET
 0x0000011C:  50 ;                   PUSH           AX
 0x0000011D:  52 ;                   PUSH           DX
 0x0000011E:  88 C2 ;                MOV            DL, AL
@@ -19,4 +19,4 @@
 0x00000122:  CD 21 ;                INT            BYTE 0x21
 0x00000124:  5A ;                   POP            DX
 0x00000125:  58 ;                   POP            AX
-0x00000126:  C3 ;                   RET           
+0x00000126:  C3 ;                   RET

@@ -57,35 +57,35 @@
 0x0000018C:  D9 B0 00 20 ;          FSTENV         MEM [BX + SI + 0x2000]
 0x00000190:  D9 30 ;                FSTENV         MEM [BX + SI]
 0x00000192:  D9 37 ;                FSTENV         MEM [BX]
-0x00000194:  D9 F7 ;                FINCSTP       
+0x00000194:  D9 F7 ;                FINCSTP
 0x00000196:  D9 B8 00 20 ;          FSTCW          DWORD [BX + SI + 0x2000]
 0x0000019A:  D9 38 ;                FSTCW          DWORD [BX + SI]
 0x0000019C:  D9 3F ;                FSTCW          DWORD [BX]
 0x0000019E:  D9 FF ;                FPU RESERVED
-0x000001A0:  D9 D0 ;                FNOP          
-0x000001A2:  D9 E0 ;                FCHS          
-0x000001A4:  D9 E1 ;                FABS          
-0x000001A6:  D9 E4 ;                FTST          
-0x000001A8:  D9 E5 ;                FXAM          
-0x000001AA:  D9 E8 ;                FLD1          
-0x000001AC:  D9 E9 ;                FLDL2T        
-0x000001AE:  D9 EA ;                FLDL2E        
-0x000001B0:  D9 EB ;                FLDPI         
-0x000001B2:  D9 EC ;                FLDLG2        
-0x000001B4:  D9 ED ;                FLDLN2        
-0x000001B6:  D9 EE ;                FLDZ          
-0x000001B8:  D9 F0 ;                F2XM1         
-0x000001BA:  D9 F1 ;                FYL2X         
-0x000001BC:  D9 F2 ;                FPTAN         
-0x000001BE:  D9 F3 ;                FPATAN        
-0x000001C0:  D9 F4 ;                FXTRACT       
-0x000001C2:  D9 F6 ;                FDECSTP       
-0x000001C4:  D9 F7 ;                FINCSTP       
-0x000001C6:  D9 F8 ;                FPREM         
-0x000001C8:  D9 F9 ;                FYL2XP1       
-0x000001CA:  D9 FA ;                FSQRT         
-0x000001CC:  D9 FC ;                FRNDINT       
-0x000001CE:  D9 FD ;                FSCALE        
+0x000001A0:  D9 D0 ;                FNOP
+0x000001A2:  D9 E0 ;                FCHS
+0x000001A4:  D9 E1 ;                FABS
+0x000001A6:  D9 E4 ;                FTST
+0x000001A8:  D9 E5 ;                FXAM
+0x000001AA:  D9 E8 ;                FLD1
+0x000001AC:  D9 E9 ;                FLDL2T
+0x000001AE:  D9 EA ;                FLDL2E
+0x000001B0:  D9 EB ;                FLDPI
+0x000001B2:  D9 EC ;                FLDLG2
+0x000001B4:  D9 ED ;                FLDLN2
+0x000001B6:  D9 EE ;                FLDZ
+0x000001B8:  D9 F0 ;                F2XM1
+0x000001BA:  D9 F1 ;                FYL2X
+0x000001BC:  D9 F2 ;                FPTAN
+0x000001BE:  D9 F3 ;                FPATAN
+0x000001C0:  D9 F4 ;                FXTRACT
+0x000001C2:  D9 F6 ;                FDECSTP
+0x000001C4:  D9 F7 ;                FINCSTP
+0x000001C6:  D9 F8 ;                FPREM
+0x000001C8:  D9 F9 ;                FYL2XP1
+0x000001CA:  D9 FA ;                FSQRT
+0x000001CC:  D9 FC ;                FRNDINT
+0x000001CE:  D9 FD ;                FSCALE
 0x000001D0:  DA 80 00 20 ;          FIADD          DWORD [BX + SI + 0x2000]
 0x000001D4:  DA 00 ;                FIADD          DWORD [BX + SI]
 0x000001D6:  DA 07 ;                FIADD          DWORD [BX]
@@ -133,15 +133,15 @@
 0x00000240:  DB B8 00 20 ;          FSTP           DWORD [BX + SI + 0x2000]
 0x00000244:  DB 38 ;                FSTP           DWORD [BX + SI]
 0x00000246:  DB 3F ;                FSTP           DWORD [BX]
-0x00000248:  9B ;                   WAIT          
-0x00000249:  DB E0 ;                FENI          
-0x0000024B:  9B ;                   WAIT          
-0x0000024C:  DB E1 ;                FDISI         
-0x0000024E:  9B ;                   WAIT          
-0x0000024F:  DB E2 ;                FCLEX         
-0x00000251:  9B ;                   WAIT          
-0x00000252:  DB E3 ;                FINIT         
-0x00000254:  DB E4 ;                FSETPM        
+0x00000248:  9B ;                   WAIT
+0x00000249:  DB E0 ;                FENI
+0x0000024B:  9B ;                   WAIT
+0x0000024C:  DB E1 ;                FDISI
+0x0000024E:  9B ;                   WAIT
+0x0000024F:  DB E2 ;                FCLEX
+0x00000251:  9B ;                   WAIT
+0x00000252:  DB E3 ;                FINIT
+0x00000254:  DB E4 ;                FSETPM
 0x00000256:  DC 80 00 20 ;          FADD           QWORD [BX + SI + 0x2000]
 0x0000025A:  DC 00 ;                FADD           QWORD [BX + SI]
 0x0000025C:  DC 07 ;                FADD           QWORD [BX]
@@ -197,7 +197,7 @@
 0x000002CE:  DE C0 ;                FADDP          ST0, ST
 0x000002D0:  DE C8 ;                FMULP          ST0, ST
 0x000002D2:  DE D0 ;                FCOMP          ST0, ST
-0x000002D4:  DE D9 ;                FCOMPP        
+0x000002D4:  DE D9 ;                FCOMPP
 0x000002D6:  DE E0 ;                FSUBP          ST0, ST
 0x000002D8:  DE E8 ;                FSUBRP         ST0, ST
 0x000002DA:  DE F0 ;                FDIVP          ST0, ST
@@ -214,7 +214,7 @@
 0x000002F0:  DF C8 ;                FXCH           ST0
 0x000002F2:  DF D0 ;                FSTP           ST0
 0x000002F4:  DF D8 ;                FSTP           ST0
-0x000002F6:  DF E0 ;                FSTSW AX      
+0x000002F6:  DF E0 ;                FSTSW AX
 0x000002F8:  DF E8 ;                FPU RESERVED
 0x000002FA:  DF F0 ;                FPU RESERVED
 0x000002FC:  DF F8 ;                FPU RESERVED

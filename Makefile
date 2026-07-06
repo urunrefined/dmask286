@@ -25,3 +25,10 @@ test: dmask286 test.COM testf.COM callback.COM testlen.COM testlen2.COM
 	diff callback.dasm callback.dasm.temp
 	diff testlen.dasm testlen.dasm.temp
 	diff testlen2.dasm testlen2.dasm.temp
+
+updtest:
+	./dmask286 test.COM > test.dasm
+	./dmask286 testf.COM > testf.dasm
+	./dmask286 callback.COM > callback.dasm
+	./dmask286 testlen.COM > testlen.dasm
+	./dmask286 testlen2.COM > testlen2.dasm

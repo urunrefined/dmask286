@@ -262,7 +262,7 @@ static Op ops [] = {
         {{0xD5, 0x0A},     "AAD",   &none               },
         {{0xD4, 0x0A},     "AAM",   &none               },
         {0x3F,             "AAS",   &none               },
-        
+
         {0x10,             "ADC",   &R_RMB_RB           },
         {0x11,             "ADC",   &R_RMW_RW           },
         {0x12,             "ADC",   &R_RB_RMB           },
@@ -272,7 +272,7 @@ static Op ops [] = {
         {0x80,             "ADC",   &R_RMB_DB,  OPExt::N, 2 },
         {0x81,             "ADC",   &R_RMW_DW,  OPExt::N, 2 },
         {0x83,             "ADC",   &R_RMW_DB,  OPExt::N, 2 },
-        
+
         {0x00,             "ADD",   &R_RMB_RB           },
         {0x01,             "ADD",   &R_RMW_RW           },
         {0x02,             "ADD",   &R_RB_RMB           },
@@ -291,21 +291,21 @@ static Op ops [] = {
         {0x80,             "AND",   &R_RMB_DB,  OPExt::N, 4 },
         {0x81,             "AND",   &R_RMW_DW,  OPExt::N, 4 },
         {0x63,             "ARPL",  &R_RMW_RW           },
-        
+
         {0x62,             "BOUND", &R_RW_RMW           },
-        
+
         {0xE8,             "CALL",  &I_DW               },
         {0xFF,             "CALL",  &R_RMW,     OPExt::N, 2 },
         {0x9A,             "CALL",  &I_DDW              },
         {0xFF,             "CALL",  &R_RMDW,    OPExt::N, 3 },
-        
-        {0x98,             "CBW",   &none               },        
+
+        {0x98,             "CBW",   &none               },
         {0xF8,             "CLC",   &none               },
         {0xFC,             "CLD",   &none               },
         {0xFA,             "CLI",   &none               },
         {{0x0F,0x06},      "CLTS",  &none               },
         {0xF5,             "CMC",   &none               },
-        
+
         {0x3C,             "CMP",   &REG_AL_DB          },
         {0x3D,             "CMP",   &REG_AX_DW          },
         {0x80,             "CMP",   &R_RMB_DB,  OPExt::N, 7 },
@@ -315,15 +315,15 @@ static Op ops [] = {
         {0x39,             "CMP",   &R_RMW_RW           },
         {0x3A,             "CMP",   &R_RB_RMB           },
         {0x3B,             "CMP",   &R_RW_RMW           },
-        
+
         {0xA6,             "CMPSB", &none               },
         {0xA7,             "CMPSW", &none               },
-        
+
         {0x99,             "CWD",   &none               },
-        
+
         {0x27,             "DAA",   &none               },
         {0x2F,             "DAS",   &none               },
-        
+
         {0xFE,             "DEC",   &R_RMB,     OPExt::N, 1 },
         {0xFF,             "DEC",   &R_RMW,     OPExt::N, 1 },
         {0x48,             "DEC",   &REG_AX,            },
@@ -334,27 +334,27 @@ static Op ops [] = {
         {0x4D,             "DEC",   &REG_BP,            },
         {0x4E,             "DEC",   &REG_SI,            },
         {0x4F,             "DEC",   &REG_DI,            },
-        
+
         {0xF6,             "DIV",   &R_RMB,     OPExt::N, 6 },
         {0xF7,             "DIV",   &R_RMW,     OPExt::N, 6 },
-        
+
         {0xC8,             "ENTER", &I_DW_DB,           },
-        
+
         {0xF4,             "HLT",   &none               },
-        
+
         {0xF6,             "IDIV",  &R_RMB,     OPExt::N, 7 },
         {0xF7,             "IDIV",  &R_RMW,     OPExt::N, 7 },
-        
+
         {0xF6,             "IMUL",  &R_RMB,     OPExt::N, 5 },
         {0xF7,             "IMUL",  &R_RMW,     OPExt::N, 5 },
         {0x6B,             "IMUL",  &R_RW_RMW_DB,       },
         {0x69,             "IMUL",  &R_RW_RMW_DW,       },
-        
+
         {0xE4,             "IN",    &REG_AL_DB          },
         {0xEC,             "IN",    &REG_AL_DX          },
         {0xE5,             "IN",    &REG_AX_DB          },
         {0xED,             "IN",    &REG_AX_DX          },
-        
+
         {0xFE,             "INC",   &R_RMB,     OPExt::N, 0 },
         {0xFF,             "INC",   &R_RMW,     OPExt::N, 0 },
         {0x40,             "INC",   &REG_AX,            },
@@ -365,15 +365,15 @@ static Op ops [] = {
         {0x45,             "INC",   &REG_BP,            },
         {0x46,             "INC",   &REG_SI,            },
         {0x47,             "INC",   &REG_DI,            },
-        
+
         {0x6C,             "INSB",  &none               },
         {0x6D,             "INSW",  &none               },
-        
+
         {0xCC,             "INT3",  &none               },
         {0xCD,             "INT",   &I_DB               },
         {0xCE,             "INTO",  &none               },
         {0xCF,             "IRET",  &none               },
-        
+
         {0x77,             "JA",    &I_DB               },
         {0x73,             "JAE",   &I_DB               },
         {0x72,             "JB",    &I_DB               },
@@ -410,36 +410,36 @@ static Op ops [] = {
         {0xE9,             "JMP",   &I_DW               },
         {0xFF,             "JMP",   &R_RMW,     OPExt::N, 4 },
         {0xFF,             "JMP",   &R_RMDW,    OPExt::N, 5 },
-        
+
         {0x9F,             "LAHF",  &none,              },
         {{0x0F, 0x02},     "LAR",   &R_RW_RMW,          },
         {0xC5,             "LDS",   &R_RW_RMDW,         },
         {0xC4,             "LES",   &R_RW_RMDW,         },
-        
+
         {0x8D,             "LEA",   &R_RW_MEM,          },
-        
+
         {0xC9,             "LEAVE", &none,              },
-        
+
         {{0x0F, 0x01 },    "LGDT",  &R_MEM,     OPExt::N, 2 },
         {{0x0F, 0x01 },    "LIDT",  &R_MEM,     OPExt::N, 3 },
         {{0x0F, 0x00 },    "LLDT",  &R_RMW,     OPExt::N, 2 },
         {{0x0F, 0x01 },    "LMSW",  &R_RMW,     OPExt::N, 6 },
-        
+
         {{0x0F, 0x05},     "LOADALL286", &none             },
 
         {0xF0,             "LOCK",  &none,              },
-        
+
         {0xAC,             "LODSB", &none,              },
         {0xAD,             "LODSW", &none,              },
-        
+
         {0xE2,             "LOOP",  &I_DB,              },
         {0xE1,             "LOOPE", &I_DB,              },
         {0xE0,             "LOOPNE",&I_DB,              },
-        
+
         {{0x0F, 0x03},     "LSL",   &R_RW_RMW,          },
-        
+
         {{0x0F, 0x00},     "LTR",   &R_RMW,    OPExt::N, 3  },
-        
+
         {0x88,             "MOV",   &R_RMB_RB,          },
         {0x89,             "MOV",   &R_RMW_RW,          },
         {0x8A,             "MOV",   &R_RB_RMB,          },
@@ -477,18 +477,18 @@ static Op ops [] = {
         {0xC7,             "MOV",   &R_RMW_DW},
         {0xA4,             "MOVSB", &none },
         {0xA5,             "MOVSW", &none },
-        
+
         {0xF6,             "MUL",   &R_RMB,   OPExt::N, 4 },
         {0xF7,             "MUL",   &R_RMW,   OPExt::N, 4 },
-        
+
         {0xF6,             "NEG",   &R_RMB,   OPExt::N, 3 },
         {0xF7,             "NEG",   &R_RMW,   OPExt::N, 3 },
-        
+
         {0x90,             "NOP",   &none },
-        
+
         {0xF6,             "NOT",   &R_RMB,   OPExt::N, 2 },
-        {0xF7,             "NOT",   &R_RMW,   OPExt::N, 2 },        
-        
+        {0xF7,             "NOT",   &R_RMW,   OPExt::N, 2 },
+
         {0x08,             "OR",    &R_RMB_RB          },
         {0x09,             "OR",    &R_RMW_RW          },
         {0x0A,             "OR",    &R_RB_RMB          },
@@ -497,14 +497,14 @@ static Op ops [] = {
         {0x0D,             "OR",    &REG_AX_DW         },
         {0x80,             "OR",    &R_RMB_DB, OPExt::N, 1 },
         {0x81,             "OR",    &R_RMW_DW, OPExt::N, 1 },
-        
+
         {0xE6,             "OUT",   &REG_DB_AL,        },
         {0xE7,             "OUT",   &REG_DB_AX,        },
         {0xEE,             "OUT",   &REG_DX_AL,        },
         {0xEF,             "OUT",   &REG_DX_AX,        },
         {0x6E,             "OUTSB", &none,             },
         {0x6F,             "OUTSW", &none,             },
-        
+
         {0x1F,             "POP",   &REG_DS,           },
         //Nothing in the spec
         {0x07,             "POP",   &REG_ES,           },
@@ -537,7 +537,7 @@ static Op ops [] = {
         {0x6A,             "PUSH",  &I_DB,             },
         {0x60,             "PUSHA", &none,             },
         {0x9C,             "PUSHF", &none,             },
-        
+
         {0xD0,             "RCL",   &R_RMB_C1, OPExt::N, 2 },
         {0xD2,             "RCL",   &R_RMB_CL, OPExt::N, 2 },
         {0xC0,             "RCL",   &R_RMB_DB, OPExt::N, 2 },
@@ -561,8 +561,8 @@ static Op ops [] = {
         {0xC0,             "ROR",   &R_RMB_DB, OPExt::N, 1 },
         {0xD1,             "ROR",   &R_RMW_C1, OPExt::N, 1 },
         {0xD3,             "ROR",   &R_RMW_CL, OPExt::N, 1 },
-        {0xC1,             "ROR",   &R_RMW_DB, OPExt::N, 1 },        
-        
+        {0xC1,             "ROR",   &R_RMW_DB, OPExt::N, 1 },
+
         {{0xF3, 0x6C},     "REP INSB", &none           },
         {{0xF3, 0x6D},     "REP INSW", &none           },
         {{0xF3, 0xA4},     "REP MOVSB", &none          },
@@ -579,14 +579,14 @@ static Op ops [] = {
         {{0xF2, 0xA7},     "REPNE CMPSW", &none         },
         {{0xF2, 0xAE},     "REPNE SCASB", &none         },
         {{0xF2, 0xAF},     "REPNE SCASW", &none         },
-        
+
         {0xCB,             "RET",         &none         },
         {0xC3,             "RET",         &none         },
         {0xCA,             "RETF",        &I_DW         },
         {0xC2,             "RET",         &I_DW         },
-        
+
         {0x9E,             "SAHF",        &none         },
-        
+
         {0xD0,             "SAL",   &R_RMB_C1, OPExt::N, 4 },
         {0xD2,             "SAL",   &R_RMB_CL, OPExt::N, 4 },
         {0xC0,             "SAL",   &R_RMB_DB, OPExt::N, 4 },
@@ -605,7 +605,7 @@ static Op ops [] = {
         {0xD1,             "SHR",   &R_RMW_C1, OPExt::N, 5 },
         {0xD3,             "SHR",   &R_RMW_CL, OPExt::N, 5 },
         {0xC1,             "SHR",   &R_RMW_DB, OPExt::N, 5 },
-        
+
         {0x18,             "SBB",   &R_RMB_RB          },
         {0x19,             "SBB",   &R_RMW_RW          },
         {0x1A,             "SBB",   &R_RB_RMB          },
@@ -615,9 +615,9 @@ static Op ops [] = {
         {0x80,             "SBB",   &R_RMB_DB,  OPExt::N, 3 },
         {0x81,             "SBB",   &R_RMW_DW,  OPExt::N, 3 },
         {0x83,             "SBB",   &R_RMW_DB,  OPExt::N, 3 },
-        
+
         {0xAE,             "SCASB", &none               },
-        {0xAF,             "SCASW", &none               },        
+        {0xAF,             "SCASW", &none               },
         {{0x0F, 0x01 },    "SGDT",  &R_MEM,     OPExt::N, 0 },
         {{0x0F, 0x01 },    "SIDT",  &R_MEM,     OPExt::N, 1 },
         {{0x0F, 0x00 },    "SLDT",  &R_RMW,     OPExt::N, 0 },
@@ -628,7 +628,7 @@ static Op ops [] = {
         {0xAA,             "STOSB", &none               },
         {0xAB,             "STOSW", &none               },
         {{0x0F, 0x00 },    "STR",   &R_RMW,      OPExt::N, 1},
-        
+
         {0x28,             "SUB",   &R_RMB_RB           },
         {0x29,             "SUB",   &R_RMW_RW           },
         {0x2A,             "SUB",   &R_RB_RMB           },
@@ -638,7 +638,7 @@ static Op ops [] = {
         {0x80,             "SUB",   &R_RMB_DB,  OPExt::N, 5 },
         {0x81,             "SUB",   &R_RMW_DW,  OPExt::N, 5 },
         {0x83,             "SUB",   &R_RMW_DB,  OPExt::N, 5 },
-        
+
         {0x84,             "TEST",  &R_RMB_RB           },
         {0x85,             "TEST",  &R_RMW_RW           },
         {0xA8,             "TEST",  &REG_AL_DB          },
@@ -768,7 +768,7 @@ static Op ops [] = {
         {0xDC,             "FDIV",   &F_STREG_ST,    OPExt::FPU_11,  6},
         {0xDC,             "FDIVR",  &R_RMQW,        OPExt::FPU_XY,  7},
         {0xDC,             "FDIVR",  &F_STREG_ST,    OPExt::FPU_11,  7},
-        
+
         {0xDD,             "FLD",     &R_RMQW,     OPExt::FPU_XY,  0},
 //      {0xDD,             "FPU Reserved", &I_DB,       OPExt::FPU_XY,  1},
         {0xDD,             "FST",     &R_RMQW,     OPExt::FPU_XY,  2},
@@ -1024,6 +1024,23 @@ static void printRM(const uint8_t *cDecode, uint8_t rm, Width regWidth,
 
 static void printDescription(const Description &description,
                              const uint8_t *decode, Line &line) {
+
+    {
+        bool hasDescription = false;
+
+        for (const D &d : description.d) {
+            if (d.type != Type::NONE) {
+                hasDescription = true;
+                break;
+            }
+        }
+
+        if (!hasDescription)
+            return;
+    }
+
+    line << Pad{50};
+
     size_t offset = getRMOffset(description, decode);
     bool first = true;
 
@@ -1169,7 +1186,7 @@ static size_t printOP(const std::vector<uint8_t> &decode, uint32_t decodeOffset,
              << " ";
     }
 
-    line << "; " << Pad{36} << op.name << Pad{50};
+    line << "; " << Pad{36} << op.name;
 
     printDescription(*(op.description),
                      decode.data() + decodeOffset + op.codeSz, line);
